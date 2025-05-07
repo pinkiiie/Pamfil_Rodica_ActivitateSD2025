@@ -130,6 +130,11 @@
     <ClCompile Include="laborator1_clienti.c" />
     <ClCompile Include="task1.c" />
     <ClCompile Include="task2.c" />
+    <ClCompile Include="task3.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="date.txt" />
+    <Text Include="proprietari.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
