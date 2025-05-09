@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CompletareSablon3-FisText.c" />
     <ClCompile Include="laborator1_clienti.c" />
     <ClCompile Include="task1.c" />
     <ClCompile Include="task2.c" />
@@ -135,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="date.txt" />
+    <Text Include="masini.txt" />
     <Text Include="proprietari.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

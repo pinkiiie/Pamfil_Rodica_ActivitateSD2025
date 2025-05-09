@@ -30,12 +30,18 @@
     <ClCompile Include="task4.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CompletareSablon3-FisText.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="proprietari.txt">
       <Filter>Source Files</Filter>
     </Text>
     <Text Include="date.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="masini.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
