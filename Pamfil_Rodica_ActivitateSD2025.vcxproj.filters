@@ -33,6 +33,15 @@
     <ClCompile Include="CompletareSablon3-FisText.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CompletareSablon4-LSI.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletareSablon5-LDI.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletareSablon6-HashTable.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="proprietari.txt">
