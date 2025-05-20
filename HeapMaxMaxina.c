@@ -104,6 +104,12 @@ void afisareHeap(Heap heap) {
 	}
 }
 
+void afisareHeapAscuns(Heap heap) {
+	for (int i = heap.nrMasini; i < heap.lungime; i++) {
+		afisareMasina(heap.vector[i]);
+	}
+}
+
 Masina extrageMasina(Heap* heap) {
 	if (heap->nrMasini > 0) {
 		Masina aux = heap->vector[heap->nrMasini - 1];
@@ -128,7 +134,30 @@ void dezalocareHeap(Heap* heap) {
 	heap->nrMasini = 0;
 }
 
+int main() {
+	Heap heap = citireHeapDeMasiniDinFisier("masini.txt");
+	afisareHeap(heap);
+	printf("Masini extrase: \n\n");
+	afisareMasina(extrageMasina(&heap));//1
+	afisareMasina(extrageMasina(&heap));//2
+	afisareMasina(extrageMasina(&heap));//3
+	afisareMasina(extrageMasina(&heap));//4
+	afisareMasina(extrageMasina(&heap));//5
+	afisareMasina(extrageMasina(&heap));//6
+	afisareMasina(extrageMasina(&heap));//7
+	afisareMasina(extrageMasina(&heap));//8
+	afisareMasina(extrageMasina(&heap));//9
+	afisareMasina(extrageMasina(&heap));//10
 
+
+
+	printf("Heap-ul ascund:\n\n");
+	afisareHeapAscuns(heap);
+
+	dezalocareHeap(&heap);
+	
+	return 0;
+}
 
 
 
