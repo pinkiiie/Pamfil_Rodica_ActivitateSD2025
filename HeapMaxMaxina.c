@@ -40,5 +40,48 @@ Masina citireMasinaDinFisier(FILE* file) {
 
 	return m1;
 }
+
+void afisareMasina(Masina masina) {
+	printf("ID:%d\n", masina.id);
+	printf("Nr usi:%d\n", masina.nrUsi);
+	printf("Pret:%.2f\n", masina.pret);
+	printf("Model:%s\n", masina.model);
+	printf("Nume sofer:%s\n", masina.numeSofer);
+	printf("Serie:%c\n\n", masina.serie);
+}
 	
+Heap initializareHeap(int lungime) {
+	Heap heap;
+	heap.lungime = lungime;
+	heap.nrMasini = 0;
+	heap.vector = (Masina*)malloc(sizeof(Masina) * lungime);
+	return heap;
+}
+
+void filtreazaHeap(Heap heap, int pozitieNod) {
+	int pozFiuSt = 2 * pozitieNod + 1;
+	int pozFiuDr = 2 * pozitieNod + 2;
+	int pozMax = pozitieNod;
+
+	if (pozFiuSt < heap.nrMasini && heap.vector[pozMax].pret < heap.vector[pozFiuSt].pret) {
+		pozMax = pozFiuSt;
+	}
+
+	if (pozFiuDr < heap.nrMasini && heap.vector[pozMax].pret < heap.vector[pozFiuDr].pret) {
+		pozMax = pozFiuDr;
+	}
+
+	if (pozMax != pozitieNod) {
+		Masina aux = heap.vector[pozMax];
+		heap.vector[pozMax] = heap.vector[pozitieNod];
+		heap.vector[pozitieNod] = aux;
+
+		if (pozMax <= (heap.nrMasini - 2) / 2) {
+			filtreazaHeap(heap, pozMax);
+		}
+	}
+
+}
+
+
 
