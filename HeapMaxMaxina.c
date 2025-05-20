@@ -13,4 +13,13 @@ struct StructuraMasina {
 };
 typedef struct StructuraMasina Masina;
 
+struct Heap {
+int lungime;
+Masina* vector;
+int nrMasini;
+};
+typedef struct Heap Heap;
+
+
+	
 
