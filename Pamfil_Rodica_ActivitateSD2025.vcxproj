@@ -131,6 +131,7 @@
     <ClCompile Include="CompletareSablon4-LSI.c" />
     <ClCompile Include="CompletareSablon5-LDI.c" />
     <ClCompile Include="CompletareSablon6-HashTable.c" />
+    <ClCompile Include="HeapMaxMaxina.c" />
     <ClCompile Include="laborator1_clienti.c" />
     <ClCompile Include="task1.c" />
     <ClCompile Include="task2.c" />
