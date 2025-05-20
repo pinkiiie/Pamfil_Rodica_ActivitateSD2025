@@ -83,5 +83,64 @@ void filtreazaHeap(Heap heap, int pozitieNod) {
 
 }
 
+Heap citireHeapDeMasiniDinFisier(const char* numeFisier) {
+	FILE* file = fopen(numeFisier, "r");
+	Heap heap = initializareHeap(10);
+
+	while (!feof(file)) {
+		heap.vector[heap.nrMasini++] = citireMasinaDinFisier(file);
+
+	}
+	fclose(file);
+	for (int i = (heap.nrMasini - 2) / 2; i >= 0; i--) {
+		filtreazaHeap(heap, i);
+	}
+	return heap;
+}
+
+void afisareHeap(Heap heap) {
+	for (int i = 0; i < heap.nrMasini; i++) {
+		afisareMasina(heap.vector[i]);
+	}
+}
+
+Masina extrageMasina(Heap* heap) {
+	if (heap->nrMasini > 0) {
+		Masina aux = heap->vector[heap->nrMasini - 1];
+		heap->vector[heap->nrMasini - 1] = aux;
+		heap->nrMasini--;
+
+		for (int i = (heap->nrMasini - 2) / 2; i >= 0; i--) {
+			filtreazaHeap(*heap, i);
+		}
+		return aux;
+	}
+}
+
+void dezalocareHeap(Heap* heap) {
+	for (int i = 0; i < heap->lungime; i++) {
+		free(heap->vector[i].model);
+		free(heap->vector[i].numeSofer);
+	}
+	free(heap->vector);
+	heap->vector = NULL;
+	heap->lungime = 0;
+	heap->nrMasini = 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
