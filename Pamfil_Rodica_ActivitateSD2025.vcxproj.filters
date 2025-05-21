@@ -51,6 +51,9 @@
     <ClCompile Include="ABC1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AVL1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="proprietari.txt">
