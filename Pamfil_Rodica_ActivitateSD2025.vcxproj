@@ -136,6 +136,7 @@
     <ClCompile Include="ExersareHeap1.c" />
     <ClCompile Include="HeapMaxMaxina.c" />
     <ClCompile Include="laborator1_clienti.c" />
+    <ClCompile Include="StiveSiCoziCinema.c" />
     <ClCompile Include="task1.c" />
     <ClCompile Include="task2.c" />
     <ClCompile Include="task3.c" />
