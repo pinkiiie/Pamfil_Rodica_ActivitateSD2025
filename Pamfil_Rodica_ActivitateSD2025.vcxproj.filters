@@ -45,6 +45,9 @@
     <ClCompile Include="HeapMaxMaxina.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExersareHeap1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="proprietari.txt">
