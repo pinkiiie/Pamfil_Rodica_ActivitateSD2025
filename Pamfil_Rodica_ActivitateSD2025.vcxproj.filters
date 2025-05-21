@@ -59,5 +59,8 @@
     <Text Include="masini.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="DateRuj.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -1,0 +1,10 @@
+1, 11, Essence
+2, 41.50, Maybelline
+3, 31.99, Nyx
+4, 40.99, Mac
+5, 13, Catrice
+6, 40, Nyx
+7, 45.99, Rimmel
+8, 30, Catrice
+9, 10, Essence
+10, 12.5, Ada

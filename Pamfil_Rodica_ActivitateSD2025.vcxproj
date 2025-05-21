@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="date.txt" />
+    <Text Include="DateRuj.txt" />
     <Text Include="masini.txt" />
     <Text Include="proprietari.txt" />
   </ItemGroup>
