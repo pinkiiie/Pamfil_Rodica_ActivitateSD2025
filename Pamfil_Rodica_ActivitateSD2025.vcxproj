@@ -142,6 +142,7 @@
     <ClCompile Include="task4.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Cinema.txt" />
     <Text Include="date.txt" />
     <Text Include="DateRuj.txt" />
     <Text Include="masini.txt" />

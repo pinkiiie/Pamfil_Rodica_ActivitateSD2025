@@ -1,0 +1,6 @@
+5
+CinemaCity 6 1000
+MoviePlex 7 2000
+Imax 8 500
+Gloria 5 4000
+HappyCinema 3 1000

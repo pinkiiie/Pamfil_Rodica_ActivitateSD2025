@@ -71,5 +71,8 @@
     <Text Include="Tari.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="Cinema.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
