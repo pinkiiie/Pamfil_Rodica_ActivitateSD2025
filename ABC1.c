@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <malloc.h>
 
 struct tara {
 	int id;
@@ -9,65 +9,57 @@ struct tara {
 	int nr_locuitori;
 	float suprafata;
 };
+
 typedef struct tara tara;
 
-struct nod {
-	tara info;
-	struct nod* st;
-	struct nod* dr;
-};
-typedef struct nod nod;
-
-tara citesteTaraFisier(FILE* file) {
-	char buffer[100];
-	char sep[3] = ",\n";
-	fgets(buffer, 100, file);
-	char* aux;
+tara citesteTara(FILE* f) {
 	tara t;
-
-	aux = strtok(buffer, sep);
-	t.id = atoi(aux);
-
-	aux = strtok(NULL, sep);
-	t.nume = malloc(strlen(aux) + 1);
-	strcpy(t.nume, aux);
-
-	t.nr_locuitori = atoi(strtok(NULL, sep));
-	t.suprafata = atof(strtok(NULL, sep));
-
+	char buffer[100];
+	fscanf(f, "%d", &t.id);
+	fscanf(f, "%s", buffer);
+	t.nume = (char*)malloc(strlen(buffer) + 1);
+	strcpy(t.nume, buffer);
+	fscanf(f, "%d", &t.nr_locuitori);
+	fscanf(f, "%f", &t.suprafata);
 	return t;
 }
 
 void afisareTara(tara t) {
-	printf("Id: %d\n", t.id);
-	printf("Nume: %s\n", t.nume);
-	printf("Nr locuitori: %d\n", t.nr_locuitori);
-	printf("Suprafata: %.2f\n\n", t.suprafata);
+	printf("%d. %s - %d locuitori - %.2f km2\n", t.id, t.nume, t.nr_locuitori, t.suprafata);
 }
 
-nod* creareNod(tara info, nod* st, nod* dr) {
-	nod* temp = (nod*)malloc(sizeof(nod));
-	temp->info.id = info.id;
-	temp->info.nume = malloc(strlen(info.nume) + 1);
-	strcpy(temp->info.nume, info.nume);
-	temp->info.nr_locuitori = info.nr_locuitori;
-	temp->info.suprafata = info.suprafata;
-	temp->st = st;
-	temp->dr = dr;
-	return temp;
+struct NOD {
+	tara info;
+	struct NOD* st;
+	struct NOD* dr;
+};
+
+typedef struct NOD NOD;
+
+NOD* initNod(tara t, NOD* st, NOD* dr) {
+	NOD* nou = (NOD*)malloc(sizeof(NOD));
+	nou->info = t;
+	nou->st = st;
+	nou->dr = dr;
+	return nou;
 }
 
-nod* inserare(nod* radacina, tara info) {
-	if (radacina == NULL)
-		return creareNod(info, NULL, NULL);
-	if (info.id < radacina->info.id)
-		radacina->st = inserare(radacina->st, info);
-	else
-		radacina->dr = inserare(radacina->dr, info);
-	return radacina;
+NOD* inserare(NOD* rad, tara t) {
+	if (rad) {
+		if (rad->info.id > t.id) {
+			rad->st = inserare(rad->st, t);
+		}
+		else {
+			rad->dr = inserare(rad->dr, t);
+		}
+		return rad;
+	}
+	else {
+		return initNod(t, NULL, NULL);
+	}
 }
 
-void afisareArbore(nod* rad) {
+void afisareArbore(NOD* rad) {
 	if (rad) {
 		afisareArbore(rad->st);
 		afisareTara(rad->info);
@@ -75,28 +67,67 @@ void afisareArbore(nod* rad) {
 	}
 }
 
-void dezalocareArbore(nod* rad) {
+tara cautareTara(NOD* rad, int id) {
 	if (rad) {
-		dezalocareArbore(rad->st);
-		dezalocareArbore(rad->dr);
-		free(rad->info.nume);
-		free(rad);
+		if (rad->info.id == id) {
+			return rad->info;
+		}
+		else {
+			if (rad->info.id < id) {
+				return cautareTara(rad->dr, id);
+			}
+			else {
+				return cautareTara(rad->st, id);
+			}
+		}
+	}
+	else {
+		tara t;
+		t.id = -1;
+		t.nume = NULL;
+		t.nr_locuitori = 0;
+		t.suprafata = 0;
+		return t;
 	}
 }
 
-int main() {
-	nod* rad = NULL;
-	FILE* f = fopen("Tari.txt", "r");
+int inaltimeArbore(NOD* rad) {
+	if (rad) {
+		int hSt = inaltimeArbore(rad->st);
+		int hDr = inaltimeArbore(rad->dr);
+		return 1 + (hSt > hDr ? hSt : hDr);
+	}
+	else {
+		return 0;
+	}
+}
 
-	while (!feof(f)) {
-		tara t = citesteTaraFisier(f);
-		rad = inserare(rad, t);
+void afisareDePeNivel(NOD* rad, int nivelCautat, int nivelCurent) {
+	if (rad) {
+		if (nivelCautat == nivelCurent) {
+			afisareTara(rad->info);
+		}
+		else {
+			afisareDePeNivel(rad->st, nivelCautat, nivelCurent + 1);
+			afisareDePeNivel(rad->dr, nivelCautat, nivelCurent + 1);
+		}
+	}
+}
+
+void main() {
+	NOD* rad = NULL;
+	FILE* f = fopen("tari.txt", "r");
+	int nrTari = 0;
+	fscanf(f, "%d", &nrTari);
+	for (int i = 0; i < nrTari; i++) {
+		rad = inserare(rad, citesteTara(f));
 	}
 	fclose(f);
 
-	printf("Afisare tari in ordine (dupa id):\n");
 	afisareArbore(rad);
-
-	dezalocareArbore(rad);
-	return 0;
+	printf("\nTara cautata:\n");
+	afisareTara(cautareTara(rad, 4));
+	printf("\nInaltime arbore: %d\n", inaltimeArbore(rad));
+	printf("\nTari de pe nivelul 2:\n");
+	afisareDePeNivel(rad, 2, 1);
 }
