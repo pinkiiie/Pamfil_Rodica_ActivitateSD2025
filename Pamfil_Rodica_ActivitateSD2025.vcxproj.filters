@@ -65,5 +65,8 @@
     <Text Include="DateRuj.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="Tari.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

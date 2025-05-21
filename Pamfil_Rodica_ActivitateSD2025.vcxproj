@@ -145,6 +145,7 @@
     <Text Include="DateRuj.txt" />
     <Text Include="masini.txt" />
     <Text Include="proprietari.txt" />
+    <Text Include="Tari.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
