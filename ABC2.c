@@ -40,7 +40,46 @@ struct Nod {
 
 typedef struct Nod Nod;
 
+Nod* initializareNod(Lampa l, Nod* st, Nod* dr) {
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->info = l;
+	nou->st = st;
+	nou->dr = dr;
 
+	return nou;
+}
+
+Nod* inserare(Nod* rad, Lampa l) {
+	if (rad) {
+		if (l.id < rad->info.id)
+			rad->st = inserare(rad->st, l);
+		else
+			rad->dr = inserare(rad->dr, l);
+		return rad;
+	}
+	else
+		return initializareNod(l, NULL, NULL);
+}
+
+void afisareArbore(Nod* rad) {
+	if (rad) {
+		afisareArbore(rad->st);
+		afisareLampa(rad->info);
+		afisareArbore(rad->dr);
+	}
+}
+
+Lampa cautare(Nod* rad, float pretCautat) {
+	if (rad) {
+		if (rad->info.pret = pretCautat) return rad->info;
+		else if (pretCautat < rad->info.pret) return cautare(rad->st, pretCautat);
+		else return cautare(rad->dr, pretCautat);
+
+	}
+	else {
+		printf("\n Nu s-a gasit\n");
+	}
+}
 
 
 
