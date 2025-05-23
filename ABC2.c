@@ -34,8 +34,8 @@ void afisareLampa(Lampa l) {
 
 struct Nod {
 	Lampa info;
-	Nod* st;
-	Nod* dr;
+	struct Nod* st;
+	struct Nod* dr;
 };
 
 typedef struct Nod Nod;
@@ -71,21 +71,65 @@ void afisareArbore(Nod* rad) {
 
 Lampa cautare(Nod* rad, float pretCautat) {
 	if (rad) {
-		if (rad->info.pret = pretCautat) return rad->info;
+		if (rad->info.pret == pretCautat) return rad->info;
 		else if (pretCautat < rad->info.pret) return cautare(rad->st, pretCautat);
 		else return cautare(rad->dr, pretCautat);
 
 	}
 	else {
 		printf("\n Nu s-a gasit\n");
+		Lampa l;
+		l.id = -1;
+		l.material = NULL;
+		l.pret = -1;
+		return l;
 	}
 }
 
+int inaltime(Nod* rad) {
+	if (rad) {
+		int h1 = inaltime(rad->st);
+		int h2 = inaltime(rad->dr);
+		return 1 + (h1 > h2 ? h1 : h2);
+	}
+	else return 0;
+}
 
+void afisareNivel(Nod* rad, int nivelCautat, int nivelCurent) {
+	if (rad) {
+		if (nivelCurent == nivelCautat) afisareLampa(rad->info);
+		else {
+			afisareNivel(rad->st, nivelCautat, nivelCurent+1);
+			afisareNivel(rad->dr, nivelCautat, nivelCurent+1);
+		}
+	}
+}
 
+void dezalocare(Nod* rad) {
+	if (rad) {
+		dezalocare(rad->st);
+		dezalocare(rad->dr);
+		free(rad->info.material);
+		free(rad);
+	}
+}
 
 int main() {
-
+	Nod* rad = NULL;
+	FILE* f = fopen("dateLampa.txt", "r");
+	for (int i = 0; i < 10; i++) {
+		rad = inserare(rad, citireLampaFisier(f));
+	}
+	fclose(f);
+	afisareArbore(rad);
+	printf("\nCautam o lampa cu pretul de 20 \n");
+	Lampa l = cautare(rad, 20);
+	if (l.id != -1)
+		afisareLampa(l);
+	printf("\n Inaltimea este: %d\n", inaltime(rad));
+	printf("\n Noduri de pe Nivelul 2:");
+	afisareNivel(rad, 2, 1);
+	dezalocare(rad);
 
 
 
