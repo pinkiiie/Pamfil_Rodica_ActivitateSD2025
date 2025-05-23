@@ -130,6 +130,7 @@
     <ClCompile Include="ABC1.c" />
     <ClCompile Include="ABC2.c" />
     <ClCompile Include="AVL1.c" />
+    <ClCompile Include="AVL2.c" />
     <ClCompile Include="CompletareSablon3-FisText.c" />
     <ClCompile Include="CompletareSablon4-LSI.c" />
     <ClCompile Include="CompletareSablon5-LDI.c" />
