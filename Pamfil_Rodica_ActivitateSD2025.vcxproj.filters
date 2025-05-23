@@ -57,6 +57,9 @@
     <ClCompile Include="StiveSiCoziCinema.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExersareHeap2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="proprietari.txt">

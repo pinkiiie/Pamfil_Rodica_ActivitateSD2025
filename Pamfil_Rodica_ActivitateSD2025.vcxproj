@@ -134,6 +134,7 @@
     <ClCompile Include="CompletareSablon5-LDI.c" />
     <ClCompile Include="CompletareSablon6-HashTable.c" />
     <ClCompile Include="ExersareHeap1.c" />
+    <ClCompile Include="ExersareHeap2.c" />
     <ClCompile Include="HeapMaxMaxina.c" />
     <ClCompile Include="laborator1_clienti.c" />
     <ClCompile Include="StiveSiCoziCinema.c" />
