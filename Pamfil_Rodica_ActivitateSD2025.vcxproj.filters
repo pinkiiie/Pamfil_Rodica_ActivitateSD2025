@@ -60,6 +60,9 @@
     <ClCompile Include="ExersareHeap2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ABC2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="proprietari.txt">
