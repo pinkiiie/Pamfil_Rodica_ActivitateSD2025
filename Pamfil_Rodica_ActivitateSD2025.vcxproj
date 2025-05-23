@@ -146,6 +146,7 @@
   <ItemGroup>
     <Text Include="Cinema.txt" />
     <Text Include="date.txt" />
+    <Text Include="dateLampa.txt" />
     <Text Include="DateRuj.txt" />
     <Text Include="masini.txt" />
     <Text Include="proprietari.txt" />

@@ -1,0 +1,10 @@
+1,Lemn,20
+2,Lemn,21.99
+3,Metal,50.89
+4,Metal,61
+5,Plastic,32
+6,Plastic,10.99
+7,Plastic,15
+8,Lemn,87.99
+9,Metal,150
+10,Bronz,259.99

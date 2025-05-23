@@ -80,5 +80,8 @@
     <Text Include="Cinema.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="dateLampa.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -29,7 +29,7 @@ Lampa citireLampaFisier(FILE* f) {
 }
 
 void afisareLampa(Lampa l) {
-	printf("Lampa cu id-ul: %d , este facuta din materialul: %s , are pretul: %.2f", l.id, l.material, l.pret);
+	printf("Lampa cu id-ul: %d , este facuta din materialul: %s , are pretul: %.2f \n", l.id, l.material, l.pret);
 }
 
 struct Heap {
@@ -115,7 +115,7 @@ int main() {
 
 	Heap heap = citesteHeapDinFisier("dateLampa.txt");
 	afisareHeap(heap);
-	printf("Elementele extrase sunt: \n");
+	printf("\nElementele extrase sunt: \n");
 	for (int i = 0; i < 10; i++)
 		afisareLampa(extragereDinHeap(&heap));
 
